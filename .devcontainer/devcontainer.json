@@ -3,7 +3,8 @@
   // O Codespace abre o repositório normalmente e tem Docker disponível lá dentro (docker-in-docker).
   // Sempre que arranca, corre "docker compose up -d --build": base de dados + backend + frontend.
   "name": "TaskFlow - Gestão de Férias",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  // Debian 12 fixo: a tag "ubuntu" passou a apontar para uma versão sem pacotes Docker (moby).
+  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
