@@ -1,5 +1,5 @@
 {
-  // Ambiente para CodeSandbox (Devbox) e VS Code Dev Containers.
+  // Ambiente para GitHub Codespaces e VS Code / IntelliJ Dev Containers.
   // Junta o docker-compose.yml da raiz (db + backend + frontend) com um container "workspace"
   // onde fica o editor/terminal. Ao abrir, TODOS os serviços arrancam automaticamente.
   "name": "TaskFlow - Gestão de Férias",

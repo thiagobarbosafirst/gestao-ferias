@@ -12,6 +12,7 @@ Aplicação full-stack para gerir colaboradores e pedidos de férias, com a regr
 | Execução  | Docker Compose |
 
 
+
 ---
 
 ## 1. Executar com Docker (recomendado)
@@ -48,19 +49,20 @@ No ecrã de login basta clicar numa conta para preencher os campos.
 
 ---
 
-## 2. Executar no CodeSandbox (para quem avalia)
+## 2. Executar no browser com GitHub Codespaces (para quem avalia)
 
-O repositório já traz a configuração (`.devcontainer/` e `.codesandbox/tasks.json`): ao abrir, o CodeSandbox arranca **base de dados, backend e frontend** automaticamente.
+Sem instalar nada: o repositório traz a configuração `.devcontainer/`, que arranca **base de dados, backend e frontend** automaticamente.
 
-1. Publicar este projeto num repositório GitHub.
-2. Em https://codesandbox.io → **Import repository** → colar o link do GitHub (abre como *Devbox*).
-3. Esperar o primeiro arranque (3–6 minutos: descarrega imagens e compila o backend). Os logs aparecem no terminal.
-4. Abrir os previews:
-   - **porta 3000** → aplicação;
-   - **porta 8080** → acrescentar `/swagger-ui.html` ao URL para o Swagger.
-5. Entrar com `admin@taskflow.com` / `password123` (restantes contas na tabela acima).
+[![Abrir no GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/thiagobarbosafirst/gestao-ferias)
 
-> Para partilhar: botão **Share** → tornar o Devbox público (ou convidar o avaliador por email). O Devbox hiberna quando não é usado e volta a arrancar ao ser aberto.
+1. Clicar no botão acima (ou, no GitHub: **Code → Codespaces → Create codespace on main**).
+2. Esperar o primeiro arranque (3–6 minutos: descarrega imagens e compila o backend).
+3. No separador **Ports** do editor:
+   - **3000** → aplicação (clicar no ícone do globo);
+   - **8080** → acrescentar `/swagger-ui.html` ao URL para o Swagger.
+4. Entrar com `admin@taskflow.com` / `password123` (restantes contas na tabela acima).
+
+> As contas pessoais do GitHub têm horas gratuitas de Codespaces por mês, mais do que suficientes para avaliar. Alternativa sem Codespaces: clonar o repositório e correr `docker compose up --build` (secção 1).
 
 ---
 
@@ -180,8 +182,7 @@ Documentação interativa completa no **Swagger** (`/swagger-ui.html`). Para tes
 ```text
 gestao-ferias/
 ├── docker-compose.yml
-├── .devcontainer/               ← configuração CodeSandbox / Dev Containers
-├── .codesandbox/tasks.json      ← preview automático da porta 3000 no CodeSandbox
+├── .devcontainer/               ← GitHub Codespaces / Dev Containers (arranca tudo)
 ├── README.md
 ├── docs/GUIA.md                  ← explicação detalhada das decisões e do código
 ├── backend/
