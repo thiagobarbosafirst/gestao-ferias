@@ -83,7 +83,7 @@ class UserServiceTest {
 
         assertThatThrownBy(() -> service.delete(2L, new AuthenticatedUser(1L, "a@x.com", "Admin", Role.ADMIN)))
                 .isInstanceOf(ConflictException.class);
-        verify(userRepo, never()).delete(any());
+        verify(userRepo, never()).delete(any(User.class));
     }
 
     @Test

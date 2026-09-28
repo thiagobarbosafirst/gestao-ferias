@@ -11,7 +11,7 @@ Aplicação full-stack para gerir colaboradores e pedidos de férias, com a regr
 | Testes    | JUnit 5, Mockito, Testcontainers |
 | Execução  | Docker Compose |
 
-
+> Para perceber as decisões e o código em detalhe, ver **[docs/GUIA.md](docs/GUIA.md)**.
 
 ---
 
@@ -53,10 +53,11 @@ No ecrã de login basta clicar numa conta para preencher os campos.
 
 Sem instalar nada: o repositório traz a configuração `.devcontainer/`, que arranca **base de dados, backend e frontend** automaticamente.
 
-[![Abrir no GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/thiagobarbosafirst/gestao-ferias)
+[![Abrir no GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tmbthiagobarbosa/gestao-ferias)
 
 1. Clicar no botão acima (ou, no GitHub: **Code → Codespaces → Create codespace on main**).
-2. Esperar o primeiro arranque (3–6 minutos: descarrega imagens e compila o backend).
+2. Esperar o primeiro arranque (5–8 minutos: cria o ambiente, descarrega imagens e compila o backend).
+   Para acompanhar, no terminal: `docker compose logs -f backend` (pronto quando aparecer *Started VacationsApplication*).
 3. No separador **Ports** do editor:
    - **3000** → aplicação (clicar no ícone do globo);
    - **8080** → acrescentar `/swagger-ui.html` ao URL para o Swagger.

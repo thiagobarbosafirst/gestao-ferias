@@ -1,14 +1,16 @@
 {
-  // Ambiente para GitHub Codespaces e VS Code / IntelliJ Dev Containers.
-  // Junta o docker-compose.yml da raiz (db + backend + frontend) com um container "workspace"
-  // onde fica o editor/terminal. Ao abrir, TODOS os serviços arrancam automaticamente.
+  // Ambiente para GitHub Codespaces (e VS Code / IntelliJ Dev Containers).
+  // O Codespace abre o repositório normalmente e tem Docker disponível lá dentro (docker-in-docker).
+  // Sempre que arranca, corre "docker compose up -d --build": base de dados + backend + frontend.
   "name": "TaskFlow - Gestão de Férias",
-  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.workspace.yml"],
-  "service": "workspace",
-  "workspaceFolder": "/workspace",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postStartCommand": "docker compose up -d --build",
   "forwardPorts": [3000, 8080],
   "portsAttributes": {
-    "3000": { "label": "Aplicação (frontend)", "onAutoForward": "openPreview" },
-    "8080": { "label": "API + Swagger (/swagger-ui.html)" }
+    "3000": { "label": "Aplicação (frontend)", "onAutoForward": "notify" },
+    "8080": { "label": "API + Swagger (/swagger-ui.html)", "onAutoForward": "silent" }
   }
 }

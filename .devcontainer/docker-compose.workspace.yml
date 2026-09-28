@@ -1,9 +1,0 @@
-# Container de trabalho (editor/terminal). Não corre a aplicação: só fica ativo.
-# A aplicação corre nos serviços db/backend/frontend do docker-compose.yml da raiz.
-# Nota: com vários ficheiros compose, os caminhos são relativos ao PRIMEIRO (a raiz do projeto), por isso "." = raiz.
-services:
-  workspace:
-    image: mcr.microsoft.com/devcontainers/base:ubuntu
-    command: sleep infinity
-    volumes:
-      - .:/workspace:cached

@@ -5,7 +5,8 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn -q dependency:go-offline
 COPY src ./src
-RUN mvn -q package -DskipTests
+# maven.test.skip: não compila nem corre os testes na imagem (os testes correm com "mvn test")
+RUN mvn -q package -Dmaven.test.skip=true
 
 # ---------- 2) Runtime: imagem leve apenas com o JRE ----------
 FROM eclipse-temurin:21-jre

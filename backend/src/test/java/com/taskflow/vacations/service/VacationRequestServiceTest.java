@@ -164,7 +164,7 @@ class VacationRequestServiceTest {
         when(vacationRepo.findById(22L)).thenReturn(Optional.of(other));
 
         assertThatThrownBy(() -> service.cancel(auth(collaborator), 22L)).isInstanceOf(ForbiddenException.class);
-        verify(vacationRepo, never()).delete(any());
+        verify(vacationRepo, never()).delete(any(VacationRequest.class));
     }
 
     @Test
