@@ -1,0 +1,47 @@
+# Sobe a aplicação completa com um único comando:  docker compose up --build
+#   Frontend:  http://localhost:3000
+#   API:       http://localhost:8080/api
+#   Swagger:   http://localhost:8080/swagger-ui.html
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ferias
+      POSTGRES_USER: ferias
+      POSTGRES_PASSWORD: ferias
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      # O backend só arranca depois de a base de dados aceitar ligações
+      test: ["CMD-SHELL", "pg_isready -U ferias -d ferias"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/ferias
+      DB_USER: ferias
+      DB_PASSWORD: ferias
+      JWT_SECRET: segredo-local-do-docker-compose-com-pelo-menos-32-caracteres
+      SEED_DATA: "true"
+    ports:
+      - "8080:8080"
+    # Se arrancar antes de a BD estar pronta, tenta de novo.
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  db-data:

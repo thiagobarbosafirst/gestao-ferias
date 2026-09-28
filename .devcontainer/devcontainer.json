@@ -1,0 +1,14 @@
+{
+  // Ambiente para CodeSandbox (Devbox) e VS Code Dev Containers.
+  // Junta o docker-compose.yml da raiz (db + backend + frontend) com um container "workspace"
+  // onde fica o editor/terminal. Ao abrir, TODOS os serviços arrancam automaticamente.
+  "name": "TaskFlow - Gestão de Férias",
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.workspace.yml"],
+  "service": "workspace",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [3000, 8080],
+  "portsAttributes": {
+    "3000": { "label": "Aplicação (frontend)", "onAutoForward": "openPreview" },
+    "8080": { "label": "API + Swagger (/swagger-ui.html)" }
+  }
+}
