@@ -11,7 +11,6 @@ Aplicação full-stack para gerir colaboradores e pedidos de férias, com a regr
 | Testes    | JUnit 5, Mockito, Testcontainers |
 | Execução  | Docker Compose |
 
-> Para perceber as decisões e o código em detalhe, ver **[docs/GUIA.md](docs/GUIA.md)**.
 
 ---
 
